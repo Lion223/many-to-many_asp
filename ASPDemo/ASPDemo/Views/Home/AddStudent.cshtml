@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Add student";
+}
+@using ASPDemo.Models
+@model Student
+
+<h2>Add student</h2>
+
+@using (Html.BeginForm())
+{
+    <legend>Student</legend>
+
+    <p>
+        First name <br />
+        @Html.EditorFor(model => model.FirstName)
+    </p>
+
+    <p>
+        Last name <br />
+        @Html.EditorFor(model => model.LastName)
+    </p>
+
+    <p>
+        Courses <br />
+        @foreach (Course c in ViewBag.Courses)
+        {
+            <input type="checkbox" name="selectedCourses" value="@c.Id" />
+            @c.Name <br />
+        }
+    </p>
+
+    <p>
+        <input type="submit" value="Add" />
+    </p>
+
+}
+
